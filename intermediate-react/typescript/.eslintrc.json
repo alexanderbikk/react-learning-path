@@ -5,14 +5,17 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "rules": {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0
   },
-  "plugins": ["react", "import", "jsx-a11y"],
+  "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "projects": "./tsconfig.json",
     "ecmaVersion": 2022,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -28,9 +31,12 @@
     "react": {
       "versions": "detect"
     },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx"]
+      "typescript": {
+        "alwaysTryTypes": true
       }
     }
   }
