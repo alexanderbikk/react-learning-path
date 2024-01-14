@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { Pet } from "./APIResponsesTypes";
 
-const AdoptedPetContex = createContext<[Pet, (adoptedPet: Pet) => void]>([
+const AdoptedPetContex = createContext<[Pet | null, (adoptedPet: Pet) => void]>([
   {
     id: 1337,
     name: "Fido",
