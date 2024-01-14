@@ -1,13 +1,13 @@
-import { Component } from "react";
+import { Component, ErrorInfo, ReactElement } from "react";
 import { Link } from "react-router-dom";
-
-class ErrorBoudary extends Component {
+// we can still create Props interface or use {children: ReactElement} since we just need children
+class ErrorBoudary extends Component<{children: ReactElement}> {
   state = { hasError: false };
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  compoponentDidCatch(error, info) {
+  compoponentDidCatch(error: Error, info : ErrorInfo) {
     console.error("ErrorBoudary component caught error", error, info);
   }
 
