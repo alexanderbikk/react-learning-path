@@ -16,7 +16,9 @@ const Modal = ({ children }: { children: ReactElement }) => {
 
     // run it when component will unmount from DOM
     return () => {
-      modalRoot.removeChild(elRef.current!);
+      if (elRef.current) {
+        modalRoot.removeChild(elRef.current);
+      }
     };
   }, []);
 

@@ -6,7 +6,6 @@ import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
 import ErrorBoudary from "./ErrorBoundary";
 import Modal from "./Modal";
-import { PetAPIResponce } from "./APIResponsesTypes";
 
 const Details = () => {
   const { id } = useParams();
@@ -19,7 +18,7 @@ const Details = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContex);
 
-  const results = useQuery<PetAPIResponce>(["details", id], fetchPet);
+  const results = useQuery(["details", id], fetchPet);
 
   //throw new Error("Test error boundery");
   if (results.isError) {
@@ -49,6 +48,7 @@ const Details = () => {
           <p>{pet.description}</p>
           {showModal ? (
             <Modal>
+              <div>
               <div>Whould you like to adopt {pet.name}?</div>
               <div className="buttons">
                 <button
@@ -60,6 +60,7 @@ const Details = () => {
                   Yes
                 </button>
                 <button onClick={() => setShowModal(false)}>No</button>
+              </div>
               </div>
             </Modal>
           ) : null}
